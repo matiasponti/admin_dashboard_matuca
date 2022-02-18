@@ -1,3 +1,5 @@
+import 'package:admin_dashboard_matuca/locator.dart';
+import 'package:admin_dashboard_matuca/providers/auth_provider.dart';
 import 'package:flutter/material.dart';
 
 class LoginFormProvider extends ChangeNotifier {
@@ -5,7 +7,11 @@ class LoginFormProvider extends ChangeNotifier {
   String email = '';
   String password = '';
 
+  final _authProvider = locator.get<AuthProvider>();
+
   validateForm() {
-    formKey.currentState!.validate();
+    if (formKey.currentState!.validate()) {
+      _authProvider.login(email, password);
+    } else {}
   }
 }

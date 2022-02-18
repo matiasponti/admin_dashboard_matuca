@@ -1,3 +1,4 @@
+import 'package:admin_dashboard_matuca/providers/auth_provider.dart';
 import 'package:admin_dashboard_matuca/providers/login_form_provider.dart';
 import 'package:admin_dashboard_matuca/router/router.dart';
 import 'package:admin_dashboard_matuca/ui/buttons/custom_outlined_button.dart';
@@ -25,6 +26,7 @@ class LoginView extends StatelessWidget {
                 child: ConstrainedBox(
                   constraints: BoxConstraints(maxWidth: 370),
                   child: Form(
+                    autovalidateMode: AutovalidateMode.always,
                     key: loginFormProvider.formKey,
                     child: Column(
                       children: [
