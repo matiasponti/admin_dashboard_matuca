@@ -11,6 +11,7 @@ import 'package:provider/provider.dart';
 
 void main() async {
   await LocalStorage.configurePrefs();
+  setUp();
   Flurorouter.configureRoutes();
   runApp(AppState());
 }

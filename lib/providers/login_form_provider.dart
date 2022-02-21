@@ -9,9 +9,11 @@ class LoginFormProvider extends ChangeNotifier {
 
   final _authProvider = locator.get<AuthProvider>();
 
-  validateForm() {
+  bool validateForm() {
     if (formKey.currentState!.validate()) {
-      _authProvider.login(email, password);
-    } else {}
+      return true;
+    } else {
+      return false;
+    }
   }
 }

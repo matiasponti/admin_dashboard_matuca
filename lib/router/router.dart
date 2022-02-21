@@ -1,4 +1,5 @@
 import 'package:admin_dashboard_matuca/router/admin_handlers.dart';
+import 'package:admin_dashboard_matuca/router/dashboard_handlers.dart';
 import 'package:admin_dashboard_matuca/router/no_found_page_handlers.dart';
 import 'package:fluro/fluro.dart';
 
@@ -24,7 +25,9 @@ class Flurorouter {
     router.define(registerRoute,
         handler: AdminHandlers.register, transitionType: TransitionType.none);
 // router.define(dashboardRoute, handler: );
-
+    router.define(dashboardRoute,
+        handler: DashboardHandlers.dashboard,
+        transitionType: TransitionType.fadeIn);
 // 404
 
     router.notFoundHandler = NoPageFoundHandlers.noFoundPage;
