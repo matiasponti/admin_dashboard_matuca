@@ -25,4 +25,21 @@ class CustomInputs {
       )),
     );
   }
+
+  static InputDecoration searchInputDecoration({
+    required String hint,
+    required IconData icon,
+  }) {
+    return InputDecoration(
+      hintText: hint,
+      hintStyle: TextStyle(color: Colors.grey),
+      labelStyle: TextStyle(color: Colors.grey),
+      prefixIcon: Icon(
+        icon,
+        color: Colors.grey,
+      ),
+      border: InputBorder.none,
+      enabledBorder: InputBorder.none,
+    );
+  }
 }

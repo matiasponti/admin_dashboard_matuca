@@ -1,3 +1,4 @@
+import 'package:admin_dashboard_matuca/ui/shared/navbar.dart';
 import 'package:admin_dashboard_matuca/ui/shared/sidebar.dart';
 import 'package:flutter/material.dart';
 
@@ -11,7 +12,17 @@ class DashboardLayout extends StatelessWidget {
     return Scaffold(
         backgroundColor: const Color(0xffEDF1F2),
         body: Row(
-          children: [SideBar(), Expanded(child: child)],
+          children: [
+            SideBar(),
+            Expanded(
+              child: Column(
+                children: [
+                  NavBar(),
+                  Expanded(child: child),
+                ],
+              ),
+            ),
+          ],
         ));
   }
 }
