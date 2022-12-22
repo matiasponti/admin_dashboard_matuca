@@ -1,3 +1,5 @@
+import 'package:admin_dashboard_matuca/ui/shared/widgets/nav_bar_avatar.dart';
+import 'package:admin_dashboard_matuca/ui/shared/widgets/notifications_idicator.dart';
 import 'package:admin_dashboard_matuca/ui/shared/widgets/search_text.dart';
 import 'package:flutter/material.dart';
 
@@ -19,7 +21,16 @@ class NavBar extends StatelessWidget {
           ConstrainedBox(
             constraints: BoxConstraints(maxWidth: 250),
             child: SearchText(),
-          )
+          ),
+          Spacer(),
+          NotificationIndicator(),
+          SizedBox(
+            width: 10,
+          ),
+          NavBarAvatar(),
+          SizedBox(
+            width: 10,
+          ),
         ],
       ),
     );

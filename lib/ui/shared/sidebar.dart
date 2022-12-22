@@ -1,5 +1,5 @@
 import 'package:admin_dashboard_matuca/ui/shared/widgets/logo.dart';
-import 'package:admin_dashboard_matuca/ui/shared/widgets/menu_item.dart';
+import 'package:admin_dashboard_matuca/ui/shared/widgets/menu_item.dart' as widget;
 import 'package:admin_dashboard_matuca/ui/shared/widgets/text_separator.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -21,31 +21,31 @@ class SideBar extends StatelessWidget {
             height: 50,
           ),
           TextSeparator(text: 'Main'),
-          MenuItem(
+          widget.MenuItem(
               text: 'Dashboard',
               onPressed: () {},
               icon: Icons.compass_calibration_outlined),
-          MenuItem(
+          widget.MenuItem(
               text: 'Orders',
               onPressed: () {},
               icon: Icons.shopping_cart_outlined),
-          MenuItem(
+          widget.MenuItem(
               text: 'Analytics',
               onPressed: () {},
               icon: Icons.graphic_eq_outlined),
-          MenuItem(
+          widget.MenuItem(
               text: 'Categories',
               onPressed: () {},
               icon: Icons.layers_outlined),
-          MenuItem(
+          widget.MenuItem(
               text: 'Products',
               onPressed: () {},
               icon: Icons.dashboard_outlined),
-          MenuItem(
+          widget.MenuItem(
               text: 'Discounts',
               onPressed: () {},
               icon: Icons.attach_money_outlined),
-          MenuItem(
+          widget.MenuItem(
               text: 'Customers',
               onPressed: () {},
               icon: Icons.people_alt_outlined),
@@ -53,21 +53,21 @@ class SideBar extends StatelessWidget {
             height: 30,
           ),
           TextSeparator(text: 'Ui Elements'),
-          MenuItem(
+          widget.MenuItem(
               text: 'Icons', onPressed: () {}, icon: Icons.list_alt_outlined),
-          MenuItem(
+          widget.MenuItem(
               text: 'Marketing',
               onPressed: () {},
               icon: Icons.mark_email_read_outlined),
-          MenuItem(
+          widget.MenuItem(
               text: 'Campaign',
               onPressed: () {},
               icon: Icons.note_add_outlined),
-          MenuItem(
+          widget.MenuItem(
               text: 'Blank page',
               onPressed: () {},
               icon: Icons.post_add_outlined),
-          MenuItem(
+          widget.MenuItem(
               text: 'Logout',
               onPressed: () {},
               icon: Icons.exit_to_app_outlined),
