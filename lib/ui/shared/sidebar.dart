@@ -1,5 +1,7 @@
+import 'package:admin_dashboard_matuca/providers/side_menu_provider.dart';
 import 'package:admin_dashboard_matuca/ui/shared/widgets/logo.dart';
-import 'package:admin_dashboard_matuca/ui/shared/widgets/menu_item.dart' as widget;
+import 'package:admin_dashboard_matuca/ui/shared/widgets/menu_item.dart'
+    as widget;
 import 'package:admin_dashboard_matuca/ui/shared/widgets/text_separator.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -23,7 +25,9 @@ class SideBar extends StatelessWidget {
           TextSeparator(text: 'Main'),
           widget.MenuItem(
               text: 'Dashboard',
-              onPressed: () {},
+              onPressed: () {
+                SideMenuProvider.closeMenu();
+              },
               icon: Icons.compass_calibration_outlined),
           widget.MenuItem(
               text: 'Orders',
