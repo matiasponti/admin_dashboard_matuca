@@ -36,7 +36,12 @@ class _DashboardLayoutState extends State<DashboardLayout>
                   child: Column(
                     children: [
                       NavBar(),
-                      Expanded(child: widget.child),
+                      Expanded(
+                          child: Padding(
+                        padding:
+                            EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+                        child: widget.child,
+                      )),
                     ],
                   ),
                 ),

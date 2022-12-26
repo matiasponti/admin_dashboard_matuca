@@ -1,5 +1,6 @@
 import 'package:admin_dashboard_matuca/locator.dart';
 import 'package:admin_dashboard_matuca/providers/auth_provider.dart';
+import 'package:admin_dashboard_matuca/providers/side_menu_provider.dart';
 import 'package:admin_dashboard_matuca/router/router.dart';
 import 'package:admin_dashboard_matuca/services/local_storage.dart';
 import 'package:admin_dashboard_matuca/services/navigation_service.dart';
@@ -22,6 +23,7 @@ class AppState extends StatelessWidget {
     return MultiProvider(
       providers: [
         ChangeNotifierProvider(lazy: false, create: (_) => AuthProvider()),
+        ChangeNotifierProvider(lazy: false, create: (_) => SideMenuProvider()),
       ],
       child: MyApp(),
     );
