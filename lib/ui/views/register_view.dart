@@ -1,3 +1,4 @@
+import 'package:admin_dashboard_matuca/providers/auth_provider.dart';
 import 'package:admin_dashboard_matuca/providers/login_form_provider.dart';
 import 'package:admin_dashboard_matuca/providers/register_form_provider.dart';
 import 'package:admin_dashboard_matuca/router/router.dart';
@@ -84,7 +85,16 @@ class RegisterView extends StatelessWidget {
                         ),
                         CustomOutlinedButton(
                           onPressed: () {
-                            registerFormProvider.validateForm();
+                            final validForm =
+                                registerFormProvider.validateForm();
+                            if (!validForm) return;
+                            final authProvider = Provider.of<AuthProvider>(
+                                context,
+                                listen: false);
+                            authProvider.register(
+                                registerFormProvider.email,
+                                registerFormProvider.password,
+                                registerFormProvider.name);
                           },
                           text: 'Crear cuenta',
                           isFilled: true,
