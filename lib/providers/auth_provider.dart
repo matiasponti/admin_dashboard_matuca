@@ -19,14 +19,22 @@ class AuthProvider extends ChangeNotifier {
   }
 
   login(String email, String password) {
+    final data = {"correo": email, "password": password};
     // Peticion http
+    BackendApi.post('/auth/login', data).then((json) {
+      print(json);
 
-    LocalStorage.prefs.setString('token', _token!);
-
-    /// navigate
-    authStatus = AuthStatus.authenticated;
-    notifyListeners();
-    NavigationService.replaceTo(Flurorouter.dashboardRoute);
+      final authResponse = AuthResponse.fromMap(json);
+      user = authResponse.usuario;
+      LocalStorage.prefs.setString('token', authResponse.token);
+      authStatus = AuthStatus.authenticated;
+      final token = LocalStorage.prefs.getString('token');
+      NavigationService.replaceTo(Flurorouter.dashboardRoute);
+      BackendApi.configureDio();
+      notifyListeners();
+    }).catchError((e) {
+      NotificaitonService.showSnackBarError('Usuario o cotraseña incorrectos');
+    });
   }
 
   register(String email, String password, String name) {
@@ -40,8 +48,8 @@ class AuthProvider extends ChangeNotifier {
       authStatus = AuthStatus.authenticated;
       LocalStorage.prefs.setString('token', authResponse.token);
       final token = LocalStorage.prefs.getString('token');
-      print(token);
       NavigationService.replaceTo(Flurorouter.dashboardRoute);
+      BackendApi.configureDio();
       notifyListeners();
     }).catchError((e) {
       NotificaitonService.showSnackBarError('Cuenta ya existente');
@@ -54,13 +62,25 @@ class AuthProvider extends ChangeNotifier {
       notifyListeners();
       return false;
     }
+    try {
+      final response = await BackendApi.httpGet("/auth");
+      final authResponse = AuthResponse.fromMap(response);
+      LocalStorage.prefs.setString('token', authResponse.token);
+      user = authResponse.usuario;
+      authStatus = AuthStatus.authenticated;
+      notifyListeners();
+      return true;
+    } catch (e) {
+      print(e);
+      authStatus = AuthStatus.notAuthenticated;
+      notifyListeners();
+      return false;
+    }
+  }
 
-    // TODO: ir al backend
-    await Future.delayed(Duration(seconds: 1));
-
-    authStatus = AuthStatus.authenticated;
+  logout() {
+    LocalStorage.prefs.remove('token');
+    authStatus = AuthStatus.notAuthenticated;
     notifyListeners();
-
-    return true;
   }
 }

@@ -50,6 +50,13 @@ class LoginView extends StatelessWidget {
                         TextFormField(
                           onChanged: (value) =>
                               loginFormProvider.password = value,
+                          onFieldSubmitted: (v) {
+                            final isValid = loginFormProvider.validateForm();
+                            if (isValid) {
+                              authProvider.login(loginFormProvider.email,
+                                  loginFormProvider.password);
+                            }
+                          },
                           obscureText: true,
                           validator: (value) {
                             if (value == null || value.isEmpty)

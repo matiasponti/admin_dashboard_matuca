@@ -1,3 +1,4 @@
+import 'package:admin_dashboard_matuca/providers/auth_provider.dart';
 import 'package:admin_dashboard_matuca/providers/side_menu_provider.dart';
 import 'package:admin_dashboard_matuca/router/router.dart';
 import 'package:admin_dashboard_matuca/services/navigation_service.dart';
@@ -91,7 +92,9 @@ class SideBar extends StatelessWidget {
           TextSeparator(text: 'Exit'),
           widget.MenuItem(
               text: 'Logout',
-              onPressed: () {},
+              onPressed: () {
+                Provider.of<AuthProvider>(context, listen: false).logout();
+              },
               icon: Icons.exit_to_app_outlined),
         ],
       ),

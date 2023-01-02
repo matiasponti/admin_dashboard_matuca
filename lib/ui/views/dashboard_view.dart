@@ -1,6 +1,8 @@
 import 'package:admin_dashboard_matuca/ui/labels/custom_labels.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
+import '../../providers/auth_provider.dart';
 import '../cards/white_card.dart';
 
 class DashboardView extends StatelessWidget {
@@ -8,6 +10,8 @@ class DashboardView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final authProvider = Provider.of<AuthProvider>(context);
+
     return Container(
       child: ListView(
         physics: ClampingScrollPhysics(),
@@ -19,7 +23,9 @@ class DashboardView extends StatelessWidget {
           SizedBox(
             height: 10,
           ),
-          WhiteCard(title: 'Sales Statistics', child: Text('Hola mundo'))
+          WhiteCard(
+              title: authProvider.user!.nombre,
+              child: Text(authProvider.user!.correo))
         ],
       ),
     );
