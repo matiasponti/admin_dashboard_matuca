@@ -1,4 +1,3 @@
-import 'package:admin_dashboard_matuca/providers/auth_provider.dart';
 import 'package:admin_dashboard_matuca/providers/side_menu_provider.dart';
 import 'package:admin_dashboard_matuca/router/router.dart';
 import 'package:admin_dashboard_matuca/services/navigation_service.dart';
@@ -9,6 +8,8 @@ import 'package:admin_dashboard_matuca/ui/shared/widgets/text_separator.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
+
+import '../../providers/auth_provider.dart';
 
 class SideBar extends StatelessWidget {
   const SideBar({Key? key}) : super(key: key);
@@ -50,7 +51,9 @@ class SideBar extends StatelessWidget {
               icon: Icons.graphic_eq_outlined),
           widget.MenuItem(
               text: 'Categories',
-              onPressed: () {},
+              isActive:
+                  sideMenuProvider.currentPage == Flurorouter.categoriesRoute,
+              onPressed: () => navigateTo(Flurorouter.categoriesRoute),
               icon: Icons.layers_outlined),
           widget.MenuItem(
               text: 'Products',
@@ -93,7 +96,7 @@ class SideBar extends StatelessWidget {
           widget.MenuItem(
               text: 'Logout',
               onPressed: () {
-                Provider.of<AuthProvider>(context, listen: false).logout();
+                Provider.of<AuthProvider>(context).logout();
               },
               icon: Icons.exit_to_app_outlined),
         ],
