@@ -1,6 +1,7 @@
 import 'package:admin_dashboard_matuca/api/backend_api.dart';
 import 'package:admin_dashboard_matuca/locator.dart';
 import 'package:admin_dashboard_matuca/providers/auth_provider.dart';
+import 'package:admin_dashboard_matuca/providers/categories_provider.dart';
 import 'package:admin_dashboard_matuca/providers/side_menu_provider.dart';
 import 'package:admin_dashboard_matuca/router/router.dart';
 import 'package:admin_dashboard_matuca/services/local_storage.dart';
@@ -27,6 +28,7 @@ class AppState extends StatelessWidget {
       providers: [
         ChangeNotifierProvider(lazy: false, create: (_) => AuthProvider()),
         ChangeNotifierProvider(lazy: false, create: (_) => SideMenuProvider()),
+        ChangeNotifierProvider(create: (_) => CategoriesProvider()),
       ],
       child: MyApp(),
     );
