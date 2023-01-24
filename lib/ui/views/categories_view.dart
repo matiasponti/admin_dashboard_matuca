@@ -1,6 +1,7 @@
 import 'package:admin_dashboard_matuca/data_tables/categories_datasource.dart';
 import 'package:admin_dashboard_matuca/providers/categories_provider.dart';
 import 'package:admin_dashboard_matuca/ui/buttons/custom_icon_button.dart';
+import 'package:admin_dashboard_matuca/ui/modals/category_modal.dart';
 import 'package:flutter/material.dart';
 
 import 'package:admin_dashboard_matuca/ui/labels/custom_labels.dart';
@@ -28,6 +29,7 @@ class _CategoriesViewState extends State<CategoriesView> {
     final categorias = Provider.of<CategoriesProvider>(context).categories;
 
     return Container(
+      padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
       child: ListView(
         physics: ClampingScrollPhysics(),
         children: [
@@ -51,14 +53,22 @@ class _CategoriesViewState extends State<CategoriesView> {
                 _rowsperpage = value ?? 10;
               });
             },
-            source: CategoriesDTS(categorias),
+            source: CategoriesDTS(categorias, context),
             header: Text(
               'Esta es la lista de todas las categorias disponibles',
               overflow: TextOverflow.ellipsis,
               maxLines: 2,
             ),
             actions: [
-              CustomIconButton(onPressed: () {}, text: 'Crear', icon: Icons.add)
+              CustomIconButton(
+                  onPressed: () {
+                    showModalBottomSheet(
+                        backgroundColor: Colors.transparent,
+                        context: context,
+                        builder: (_) => CategorieModal(null, null));
+                  },
+                  text: 'Crear',
+                  icon: Icons.add)
             ],
           )
         ],
