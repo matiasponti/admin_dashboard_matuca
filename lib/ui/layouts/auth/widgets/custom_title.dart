@@ -11,21 +11,20 @@ class CustomTitle extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          SizedBox(
+          const SizedBox(
             height: 20,
           ),
-          Image.asset(
-            'twitter-white-logo.png',
+          const SizedBox(
             width: 50,
             height: 50,
           ),
-          SizedBox(
+          const SizedBox(
             height: 20,
           ),
           FittedBox(
             fit: BoxFit.contain,
             child: Text(
-              'Happening now!',
+              'Keep it simple!',
               style: GoogleFonts.montserratAlternates(
                   fontSize: 60,
                   color: Colors.white,

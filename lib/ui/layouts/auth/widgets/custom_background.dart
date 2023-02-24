@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class CustomBackground extends StatelessWidget {
   const CustomBackground({Key? key}) : super(key: key);
@@ -14,9 +15,12 @@ class CustomBackground extends StatelessWidget {
         child: Center(
           child: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 30),
-            child: Image(
-              image: AssetImage('twitter-white-logo.png'),
-              width: 400,
+            child: Text(
+              'Budget planning project',
+              style: GoogleFonts.montserratAlternates(
+                  fontSize: 60,
+                  color: Colors.white,
+                  fontWeight: FontWeight.bold),
             ),
           ),
         ),
@@ -25,11 +29,6 @@ class CustomBackground extends StatelessWidget {
   }
 
   BoxDecoration BuildBakcgroundImage() {
-    return const BoxDecoration(
-        image: DecorationImage(
-            image: AssetImage(
-              'twitter-bg.png',
-            ),
-            fit: BoxFit.cover));
+    return const BoxDecoration(color: Colors.deepOrangeAccent);
   }
 }
