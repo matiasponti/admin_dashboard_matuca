@@ -33,7 +33,7 @@ class AuthProvider extends ChangeNotifier {
       BackendApi.configureDio();
       notifyListeners();
     }).catchError((e) {
-      NotificaitonService.showSnackBarError('Usuario o cotraseña incorrectos');
+      NotificationService.showSnackBarError('Usuario o cotraseña incorrectos');
     });
   }
 
@@ -52,7 +52,7 @@ class AuthProvider extends ChangeNotifier {
       BackendApi.configureDio();
       notifyListeners();
     }).catchError((e) {
-      NotificaitonService.showSnackBarError('Cuenta ya existente');
+      NotificationService.showSnackBarError('Cuenta ya existente');
     });
   }
 

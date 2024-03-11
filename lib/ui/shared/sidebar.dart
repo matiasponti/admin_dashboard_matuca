@@ -15,7 +15,7 @@ class SideBar extends StatelessWidget {
   const SideBar({Key? key}) : super(key: key);
 
   void navigateTo(String routeName) {
-    NavigationService.navigateTo(routeName);
+    NavigationService.replaceTo(routeName);
     SideMenuProvider.closeMenu();
   }
 

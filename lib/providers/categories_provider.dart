@@ -28,4 +28,33 @@ class CategoriesProvider extends ChangeNotifier {
       print(e);
     }
   }
+
+  Future updateCategory(String id, String name) async {
+    final data = {'nombre': name};
+
+    try {
+      final json = await BackendApi.put('/categorias/$id', data);
+
+      this.categories = this.categories.map((category) {
+        if (category.id != id) return category;
+
+        category.nombre = name;
+        return category;
+      }).toList();
+      notifyListeners();
+    } catch (e) {
+      print(e);
+    }
+  }
+
+  Future deleteCategory(String id) async {
+    try {
+      final json = await BackendApi.delete('/categorias/$id', {});
+
+      categories.removeWhere((categoria) => categoria.id == id);
+      notifyListeners();
+    } catch (e) {
+      print(e);
+    }
+  }
 }

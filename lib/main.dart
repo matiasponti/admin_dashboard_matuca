@@ -44,7 +44,7 @@ class MyApp extends StatelessWidget {
       initialRoute: '/',
       onGenerateRoute: Flurorouter.router.generator,
       navigatorKey: NavigationService.navigatorKey,
-      scaffoldMessengerKey: NotificaitonService.messengerKey,
+      scaffoldMessengerKey: NotificationService.messengerKey,
       builder: (_, child) {
         final authProvider = Provider.of<AuthProvider>(context);
 

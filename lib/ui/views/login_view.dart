@@ -91,7 +91,7 @@ class LoginView extends StatelessWidget {
                         LinkText(
                           text: 'Nueva cuenta',
                           onTap: () {
-                            Navigator.pushNamed(
+                            Navigator.pushReplacementNamed(
                                 context, Flurorouter.registerRoute);
                           },
                         )

@@ -1,5 +1,6 @@
 import 'package:admin_dashboard_matuca/models/http/category.dart';
 import 'package:admin_dashboard_matuca/providers/categories_provider.dart';
+import 'package:admin_dashboard_matuca/services/notifications_service.dart';
 import 'package:admin_dashboard_matuca/ui/buttons/custom_outlined_button.dart';
 import 'package:admin_dashboard_matuca/ui/inputs/custom_inputs.dart';
 import 'package:admin_dashboard_matuca/ui/labels/custom_labels.dart';
@@ -9,7 +10,7 @@ import 'package:provider/provider.dart';
 class CategorieModal extends StatefulWidget {
   final Categoria? categoria;
 
-  const CategorieModal(Key? key, this.categoria) : super(key: key);
+  const CategorieModal(this.categoria, {Key? key}) : super(key: key);
 
   @override
   State<CategorieModal> createState() => _CategorieModalState();
@@ -75,11 +76,22 @@ class _CategorieModalState extends State<CategorieModal> {
           alignment: Alignment.center,
           child: CustomOutlinedButton(
             onPressed: () async {
-              if (id != null) {
-              } else {
-                await categoryProvider.newCategory(nombre);
+              try {
+                if (id == null) {
+                  await categoryProvider.newCategory(nombre);
+                  NotificationService.showSnackBarDone(
+                      '$nombre se ha creado correctamente');
+                } else {
+                  await categoryProvider.updateCategory(id!, nombre);
+                  NotificationService.showSnackBarDone(
+                      '$nombre se ha actualizado');
+                }
+                Navigator.of(context).pop();
+              } catch (e) {
+                Navigator.of(context).pop();
+                NotificationService.showSnackBarError(
+                    'No se pudo realizar la acción');
               }
-              Navigator.of(context).pop();
             },
             text: 'Guardar',
             color: Colors.white,
